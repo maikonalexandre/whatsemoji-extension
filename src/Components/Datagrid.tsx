@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { emojis } from "../Data/data.json";
 import { emogi } from "../@types";
-import { buildEmoji } from "../utils";
+import {
+  buildEmoji,
+  copyToClipboard,
+  getInMemory,
+  saveInMemory,
+} from "../utils";
+import { Check } from "phosphor-react";
+import { toast } from "sonner";
 
 interface DatagridProps {
   filterOptions: { activeCategory: string; searchTerm: string };
@@ -9,16 +16,6 @@ interface DatagridProps {
 
 export function Datagrid({ filterOptions }: DatagridProps) {
   const [filteredEmojis, setFilteredEmojis] = useState<emogi[] | []>([]);
-
-  console.log("[FILTERD]", filteredEmojis);
-
-  // console.log(
-  //   "[FILTER OPTIONS]",
-  //   filterOptions.activeCategory,
-  //   filterOptions.searchTerm
-  // );
-
-  // console.log("[FILTER OPTIONS]", emojis);
 
   const filterEmojisByCategory = () => {
     return emojis.filter((e) => {
@@ -29,33 +26,45 @@ export function Datagrid({ filterOptions }: DatagridProps) {
     });
   };
 
+  const filteredEmojisBySearchTerm = () => {
+    return emojis.filter((e) => {
+      return e.name.toLowerCase().includes(filterOptions.searchTerm);
+    });
+  };
+
   useEffect(() => {
     if (filterOptions.searchTerm != "") {
-      console.log("[FILTER BY SEARCH TERM]");
-      // setFilteredEmojis(1);
+      setFilteredEmojis(filteredEmojisBySearchTerm());
       return;
     }
 
     if (filterOptions.activeCategory == "recents") {
-      console.log("[BY STORAGE]");
-      // setFilteredEmojis(2);
+      setFilteredEmojis(getInMemory().reverse());
 
       return;
     }
-    const fill = filterEmojisByCategory();
 
-    setFilteredEmojis(fill);
+    setFilteredEmojis(filterEmojisByCategory());
   }, [filterOptions]);
 
   return (
-    <div className="col-span-10 mt-4 h-[350px] overflow-auto">
+    <div className="col-span-10 mt-2 h-[350px] overflow-auto">
       <div
         id="datagrid"
         className=" grid grid-cols-10 text-white text-center items-center transition"
       >
         {filteredEmojis.map((e) => (
           <div className="p-2">
-            <button className="text-center p-1 text-lg hover:bg-slate-700 rounded-full">
+            <button
+              onClick={() => {
+                copyToClipboard(buildEmoji(e.code));
+                toast("Copied to clipboard!", {
+                  icon: <Check />,
+                });
+                saveInMemory(e);
+              }}
+              className="text-center p-1 text-lg hover:bg-slate-700 rounded-full"
+            >
               {buildEmoji(e.code)}
             </button>
           </div>

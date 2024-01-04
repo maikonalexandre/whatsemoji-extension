@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import {
   User,
   Smiley,
@@ -16,7 +15,10 @@ import { SearchBar } from "./Components/SearchBar";
 import { Datagrid } from "./Components/Datagrid";
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState("recents");
+  const [filterOptions, setFilterOptions] = useState({
+    activeCategory: "recents",
+    searchTerm: "",
+  });
 
   const headerButtons = [
     { Element: Clock, category: "recents" },
@@ -31,6 +33,12 @@ function App() {
     { Element: Flag, category: "flags" },
   ];
 
+  const updateSearchTerm = (text: string) => {
+    setFilterOptions((prev) => {
+      return { searchTerm: text, activeCategory: prev.activeCategory };
+    });
+  };
+
   return (
     <div className="w-full h-full bg-container">
       <div className="bg-background px-4 h-full">
@@ -39,9 +47,11 @@ function App() {
             <div className="flex py-2" key={category}>
               <div
                 onClick={() => {
-                  setActiveCategory(category);
+                  setFilterOptions(() => {
+                    return { searchTerm: "", activeCategory: category };
+                  });
                 }}
-                data-selected={activeCategory == category}
+                data-selected={filterOptions.activeCategory == category}
                 className="p-1 cursor-pointer rounded-xl data-[selected=true]:bg-slate-700 transition hover:bg-slate-700"
               >
                 <Element size={20} />
@@ -49,8 +59,8 @@ function App() {
             </div>
           ))}
 
-          <SearchBar />
-          <Datagrid />
+          <SearchBar fn={updateSearchTerm} />
+          <Datagrid filterOptions={filterOptions} />
         </div>
       </div>
     </div>

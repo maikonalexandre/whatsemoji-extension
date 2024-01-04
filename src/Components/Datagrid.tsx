@@ -44,17 +44,14 @@ export function Datagrid({ filterOptions }: DatagridProps) {
     }
     const fill = filterEmojisByCategory();
 
-    //@ts-ignore
     setFilteredEmojis(fill);
   }, [filterOptions]);
 
-  // console.log("Component reenderizou", filteredEmojis);
-
   return (
-    <div className="col-span-10 mt-4 h-[350px] bg-red-100 overflow-auto">
+    <div className="col-span-10 mt-4 h-[350px] overflow-auto">
       <div
         id="datagrid"
-        className=" bg-white grid grid-cols-10 text-white text-center items-center transition"
+        className=" grid grid-cols-10 text-white text-center items-center transition"
       >
         {filteredEmojis.map((e) => (
           <div className="p-2">

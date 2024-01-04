@@ -13,6 +13,8 @@ import {
 import { useState } from "react";
 import { SearchBar } from "./Components/SearchBar";
 import { Datagrid } from "./Components/Datagrid";
+import { Toaster } from "sonner";
+import colors from "tailwindcss/colors";
 
 function App() {
   const [filterOptions, setFilterOptions] = useState({
@@ -41,7 +43,15 @@ function App() {
 
   return (
     <div className="w-full h-full bg-container">
-      <div className="bg-background px-4 h-full">
+      <Toaster
+        visibleToasts={1}
+        theme="dark"
+        toastOptions={{
+          className: "max-w-44",
+          style: { background: colors.slate[700] },
+        }}
+      />
+      <div className="bg-background px-4 h-full ">
         <div className="grid grid-cols-10 pt-1 text-center text-white items-center gap-x-2">
           {headerButtons.map(({ Element, category }) => (
             <div className="flex py-2" key={category}>

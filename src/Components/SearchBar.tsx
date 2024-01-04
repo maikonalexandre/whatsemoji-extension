@@ -1,4 +1,5 @@
-import { X } from "phosphor-react";
+import { Check, X } from "phosphor-react";
+import { toast } from "sonner";
 
 export function SearchBar({
   fn,
@@ -11,6 +12,9 @@ export function SearchBar({
 
   function xeee(e: string) {
     fn(e);
+    toast("Copied to clipboard!", {
+      icon: <Check />,
+    });
   }
   return (
     <div className="col-span-10 relative">

@@ -1,0 +1,16 @@
+{
+	"name": "WSSSS",
+	"description": "Example Chrome extension built with Sveltekit",
+	"version": "0.0.1",
+	"manifest_version": 3,
+	"icons": {
+		"32": "favicon.png",
+		"64": "favicon.png",
+		"128": "favicon.png"
+	},
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": "favicon.png",
+		"default_title": "WSSSS"
+	}
+}

@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  --sb-track-color: #171717;
+  --sb-thumb-color: #404040;
+  --sb-size: 10px;
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+body {
+  font-family: "Segoe UI Emoji", "Twemoji", sans-serif; /* Escolha uma fonte que suporte emojis */
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+}

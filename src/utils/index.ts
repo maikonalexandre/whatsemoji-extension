@@ -13,7 +13,7 @@ export async function copyToClipboard(data: any) {
 }
 
 export function saveInMemory(emogi: emogi) {
-  let item = localStorage.getItem("slotEmogis");
+  let item = localStorage.getItem("@whatsemoji-store");
 
   if (item) {
     const data = JSON.parse(item);
@@ -26,17 +26,20 @@ export function saveInMemory(emogi: emogi) {
     }
 
     localStorage.setItem(
-      "slotEmogis",
+      "@whatsemoji-store",
       JSON.stringify([...data, { code: emogi.code }])
     );
     return;
   }
 
-  localStorage.setItem("slotEmogis", JSON.stringify([{ code: emogi.code }]));
+  localStorage.setItem(
+    "@whatsemoji-store",
+    JSON.stringify([{ code: emogi.code }])
+  );
 }
 
 export function getInMemory() {
-  let item = localStorage.getItem("slotEmogis");
+  let item = localStorage.getItem("@whatsemoji-store");
 
   return item ? JSON.parse(item) : [];
 }

@@ -1,11 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { emojis } from "../Data/data.json";
+import { emogi } from "../@types";
+import { buildEmoji } from "../utils";
 
 interface DatagridProps {
   filterOptions: { activeCategory: string; searchTerm: string };
 }
 
 export function Datagrid({ filterOptions }: DatagridProps) {
+  const [filteredEmojis, setFilteredEmojis] = useState<emogi[] | []>([]);
+
+  console.log("[FILTERD]", filteredEmojis);
+
   // console.log(
   //   "[FILTER OPTIONS]",
   //   filterOptions.activeCategory,
@@ -14,19 +20,35 @@ export function Datagrid({ filterOptions }: DatagridProps) {
 
   // console.log("[FILTER OPTIONS]", emojis);
 
+  const filterEmojisByCategory = () => {
+    return emojis.filter((e) => {
+      return (
+        e.category.replace(/\s/g, "").toLowerCase() ===
+        filterOptions.activeCategory
+      );
+    });
+  };
+
   useEffect(() => {
     if (filterOptions.searchTerm != "") {
       console.log("[FILTER BY SEARCH TERM]");
+      // setFilteredEmojis(1);
       return;
     }
 
     if (filterOptions.activeCategory == "recents") {
       console.log("[BY STORAGE]");
+      // setFilteredEmojis(2);
+
       return;
     }
+    const fill = filterEmojisByCategory();
 
-    console.log("[BY CATEGORY]");
+    //@ts-ignore
+    setFilteredEmojis(fill);
   }, [filterOptions]);
+
+  // console.log("Component reenderizou", filteredEmojis);
 
   return (
     <div className="col-span-10 mt-4 h-[350px] bg-red-100 overflow-auto">
@@ -34,7 +56,13 @@ export function Datagrid({ filterOptions }: DatagridProps) {
         id="datagrid"
         className=" bg-white grid grid-cols-10 text-white text-center items-center transition"
       >
-        1
+        {filteredEmojis.map((e) => (
+          <div className="p-2">
+            <button className="text-center p-1 text-lg hover:bg-slate-700 rounded-full">
+              {buildEmoji(e.code)}
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

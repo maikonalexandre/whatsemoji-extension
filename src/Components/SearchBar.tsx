@@ -1,5 +1,4 @@
-import { Check, X } from "phosphor-react";
-import { toast } from "sonner";
+import { X } from "phosphor-react";
 
 export function SearchBar({
   fn,
@@ -8,27 +7,19 @@ export function SearchBar({
   fn: (text: string) => void;
   value: string;
 }) {
-  console.log(value != "");
-
-  function xeee(e: string) {
-    fn(e);
-    toast("Copied to clipboard!", {
-      icon: <Check />,
-    });
-  }
   return (
     <div className="col-span-10 relative">
       <input
         value={value}
-        onChange={(e) => xeee(e.target.value)}
+        onChange={(e) => fn(e.target.value)}
         type="text"
-        className="w-full rounded-md border text-neutral-400 border-input bg-input px-2 py-1 placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-600"
-        placeholder="pesquisar"
+        className="w-full rounded-md border text-base font-medium text-neutral-400 border-input bg-input px-2 py-1 placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+        placeholder="Procurar..."
       />
 
       <div className="absolute inset-y-0 right-0 flex items-center pr-3">
         <button
-          onClick={() => xeee("")}
+          onClick={() => fn("")}
           id="clear"
           data-visible={value != ""}
           type="button"

@@ -13,21 +13,24 @@ export async function copyToClipboard(data: any) {
 }
 
 export function saveInMemory(emogi: emogi) {
-  let item = localStorage.getItem("@whatsemoji-store");
+  const item = localStorage.getItem("@whatsemoji-store");
 
   if (item) {
-    const data = JSON.parse(item);
-    item = data.filter((e: emogi) => {
-      return JSON.stringify(e) != JSON.stringify({ code: emogi.code });
+    const data: emogi[] = JSON.parse(item);
+
+    const filteredEmojis = data.filter((e) => {
+      if (JSON.stringify(e.code) != JSON.stringify(emogi.code)) {
+        return e;
+      }
     });
 
-    if (data.length > 75) {
-      data.shift();
+    if (filteredEmojis.length > 65) {
+      filteredEmojis.shift();
     }
 
     localStorage.setItem(
       "@whatsemoji-store",
-      JSON.stringify([...data, { code: emogi.code }])
+      JSON.stringify([...filteredEmojis, { code: emogi.code }])
     );
     return;
   }

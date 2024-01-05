@@ -1,7 +1,10 @@
 {
-	"name": "WSSSS",
-	"description": "Example Chrome extension built with Sveltekit",
-	"version": "0.0.1",
+	"name": "Whatsemoji",
+	"description": "Uma extensão simples e amigável que oferece acesso rápido a uma variedade de emojis. Salva automaticamente os emojis mais utilizados para economizar tempo. Interface intuitiva e visualmente atraente para facilitar a busca e inserção de emojis.",
+	"version": "1.0.0",
+	"permissions": [
+		"storage"
+	  ],
 	"manifest_version": 3,
 	"icons": {
 		"32": "favicon.png",
@@ -11,6 +14,6 @@
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": "favicon.png",
-		"default_title": "WSSSS"
+		"default_title": "Whatsemoji"
 	}
 }

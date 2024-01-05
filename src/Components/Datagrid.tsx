@@ -28,7 +28,7 @@ export function Datagrid({ filterOptions }: DatagridProps) {
 
   const filteredEmojisBySearchTerm = () => {
     return emojis.filter((e) => {
-      return e.name.toLowerCase().includes(filterOptions.searchTerm);
+      return e.name.toLowerCase().includes(filterOptions.searchTerm.toLowerCase());
     });
   };
 

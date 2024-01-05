@@ -7,13 +7,13 @@
 	  ],
 	"manifest_version": 3,
 	"icons": {
-		"32": "favicon.png",
-		"64": "favicon.png",
-		"128": "favicon.png"
+		"32": "smile-32.png",
+		"64": "smile-64.png",
+		"128": "smile-128.png"
 	},
 	"action": {
 		"default_popup": "index.html",
-		"default_icon": "favicon.png",
+		"default_icon": "smile-128.png",
 		"default_title": "Whatsemoji"
 	}
 }

@@ -69,7 +69,10 @@ function App() {
             </div>
           ))}
 
-          <SearchBar value={filterOptions.searchTerm} fn={updateSearchTerm} />
+          <SearchBar
+            value={filterOptions.searchTerm}
+            setValue={updateSearchTerm}
+          />
 
           <Datagrid filterOptions={filterOptions} />
         </div>

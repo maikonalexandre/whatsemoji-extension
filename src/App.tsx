@@ -6,9 +6,9 @@ import {
   SoccerBall,
   Coffee,
   CarSimple,
-  LinkSimple,
   Hash,
   Flag,
+  Lightbulb,
 } from "phosphor-react";
 import { useState } from "react";
 import { SearchBar } from "./Components/SearchBar";
@@ -30,7 +30,7 @@ function App() {
     { Element: SoccerBall, category: "activities" },
     { Element: Coffee, category: "food&drink" },
     { Element: CarSimple, category: "travel&places" },
-    { Element: LinkSimple, category: "objects" },
+    { Element: Lightbulb, category: "objects" },
     { Element: Hash, category: "symbols" },
     { Element: Flag, category: "flags" },
   ];

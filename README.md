@@ -68,7 +68,7 @@ yarn build
 ## 🛠️ Stack
 - [**Typescript**](https://www.typescriptlang.org/) - JavaScript with syntax for types.
 - [**Tailwindcss**](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs
-- [**Prettier**](https://prettier.io/) + [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter.
+- [**Prettier**](https://prettier.io/) - An opinionated code formatter.
 - [**svelte-sonner**](https://github.com/wobsoriano/svelte-sonner) - An opinionated toast component for Svelte.
 - [**Phosphor Icons**](https://github.com/haruaki07/phosphor-react) - A clean and friendly icons libraries.
 - [**Vite**](https://vitejs.dev/) - s a build tool that aims to provide a faster and leaner development experience for modern web projects.

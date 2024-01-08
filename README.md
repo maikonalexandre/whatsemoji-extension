@@ -74,6 +74,11 @@ yarn build
 - [**Vite**](https://vitejs.dev/) - s a build tool that aims to provide a faster and leaner development experience for modern web projects.
 
 
+## 🔑 License
+
+- [MIT](https://opensource.org/license/mit/).
+
+
 
 
 

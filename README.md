@@ -27,7 +27,7 @@
 ## 📌 Install
 
 > [!IMPORTANT]
-> Before proceeding, make sure your browser has developer mode activated
+> Before proceeding, make sure your browser has developer mode activated.
 
 
 You will need:

@@ -18,7 +18,7 @@
 
 ## 👋 Introduction
 
-[**whatsemoji-extension**]() is simple browser extension that gives you quick access to emojis.
+[**whatsemoji-extension**]() is simple browser extension that gives you quick access to emojis
 
 - Several emojis separated by category.
 - Support for Google Chrome, Brave, Firefox and others.
